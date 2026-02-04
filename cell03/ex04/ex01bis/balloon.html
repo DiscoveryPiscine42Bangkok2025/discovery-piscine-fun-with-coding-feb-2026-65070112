@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercise 01bis - Balloon jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #balloon {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s; 
+        }
+    </style>
+</head>
+<body>
+
+    <div id="balloon"></div>
+
+    <script>
+        
+        var size = 200;
+        var currentColor = 0;
+        var colors = ['red', 'green', 'blue'];
+
+        
+        $(document).ready(function() {
+            
+            
+            var $balloon = $('#balloon');
+
+            
+            function updateBalloon() {
+                
+                $balloon.css({
+                    'width': size + 'px',
+                    'height': size + 'px',
+                    'background-color': colors[currentColor]
+                });
+            }
+
+            
+            $balloon.click(function() {
+                
+                size += 10;
+                if (size > 420) {
+                    size = 200;
+                    currentColor = 0;
+                } else {
+                    currentColor++;
+                    if (currentColor > 2) currentColor = 0;
+                }
+                
+                updateBalloon(); 
+            });
+
+            
+            $balloon.mouseleave(function() {
+
+                size -= 5;
+                if (size < 200) size = 200;
+                
+                currentColor--;
+                if (currentColor < 0) currentColor = 2;
+
+                updateBalloon(); 
+            });
+
+        });
+    </script>
+</body>
+</html>

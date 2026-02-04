@@ -1,0 +1,56 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif; 
+    color: white; 
+}
+
+
+.parallax {
+
+    background-attachment: fixed; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    
+
+    min-height: 100%; 
+    display: flex;
+    justify-content: center;
+    
+    align-items: center;
+}
+
+
+.bg-img1 {
+    background-image: url('img1.jpg')
+    
+}
+
+
+.bg-img2 {
+    background-image: url('img2.jpg');
+    
+}
+
+
+.black-block {
+    height: 400px; 
+    background-color: black;
+    color: white;
+    
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 24px;
+}
+
+
+.message-box {
+    background-color: rgba(0, 0, 0, 0.5); 
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 20px;
+}

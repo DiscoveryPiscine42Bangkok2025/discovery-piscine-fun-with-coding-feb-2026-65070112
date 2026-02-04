@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator 9000 (jQuery)</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            flex-direction: column;
+        }
+        .calculator {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        input, select {
+            padding: 5px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator">
+        <input type="text" id="leftMember">
+        
+        <select id="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+        </select>
+
+        <input type="text" id="rightMember">
+
+        <input type="submit" value="Try me!" id="submitBtn">
+    </div>
+
+    <script>
+
+        setInterval(function() {
+            alert("Please, use me...");
+        }, 30000);
+
+
+        $(document).ready(function() {
+
+            $("#submitBtn").click(function() {
+                
+                var leftInput = $("#leftMember").val();
+                var rightInput = $("#rightMember").val();
+                var op = $("#operator").val();
+                
+                var lStr = leftInput.trim();
+                var rStr = rightInput.trim();
+
+                if (!isPositiveInteger(lStr) || !isPositiveInteger(rStr)) {
+                    alert("Error :(");
+                    console.log("Error :(");
+                    return;
+                }
+
+                var l = parseInt(lStr);
+                var r = parseInt(rStr);
+                var result = 0;
+
+                if ((op === '/' || op === '%') && r === 0) {
+                    alert("It’s over 9000!");
+                    console.log("It’s over 9000!");
+                    return;
+                }
+
+                if (op === '+') result = l + r;
+                else if (op === '-') result = l - r;
+                else if (op === '*') result = l * r;
+                else if (op === '/') result = l / r;
+                else if (op === '%') result = l % r;
+
+                alert(result);
+                console.log(result);
+            });
+
+        });
+
+        function isPositiveInteger(str) {
+            return /^\d+$/.test(str);
+        }
+    </script>
+</body>
+</html>

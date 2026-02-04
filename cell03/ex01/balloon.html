@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercise 01 - Balloon</title>
+    <style>
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+            margin: 0;
+        }
+
+        #balloon {
+            width: 200px;  
+            height: 200px; 
+            background-color: red; 
+            border-radius: 50%;
+            cursor: pointer; 
+            transition: all 0.2s; 
+        }
+    </style>
+</head>
+<body>
+
+    <div id="balloon" onclick="balloonClick()" onmouseleave="balloonLeave()"></div>
+
+    <script>
+    
+        var size = 200; 
+        var currentColor = 0; 
+        var colors = ['red', 'green', 'blue']; 
+        
+        
+        var balloon = document.getElementById('balloon');
+
+        
+        function balloonClick() {
+            
+            size += 10;
+
+            
+            if (size > 420) {
+                size = 200; 
+                currentColor = 0; 
+            } else {
+                
+                currentColor++;
+                if (currentColor > 2) {
+                    currentColor = 0;
+                }
+            }
+
+            
+            updateBalloon();
+        }
+
+        
+        function balloonLeave() {
+            
+            size -= 5;
+
+            
+            if (size < 200) {
+                size = 200;
+            }
+
+            
+            currentColor--;
+            if (currentColor < 0) {
+                currentColor = 2; 
+            }
+
+            
+            updateBalloon();
+        }
+
+        
+        function updateBalloon() {
+            balloon.style.width = size + 'px';
+            balloon.style.height = size + 'px';
+            balloon.style.backgroundColor = colors[currentColor];
+        }
+    </script>
+</body>
+</html>
